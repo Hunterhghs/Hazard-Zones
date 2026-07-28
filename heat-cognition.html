@@ -142,8 +142,7 @@
 <a href="outlook.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">Outlook</a>
 </nav>
 <div class="hidden md:block font-label-caps text-label-caps text-primary-container uppercase tracking-widest">A H Heuristics Project</div>
-</div>
-</header>
+</div></header>
 <main class="pt-24 pb-stack-xl">
 <!-- Hero Section -->
 <section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-stack-xl">
@@ -193,14 +192,8 @@
 <p>The urban thermal profile of Karachi presents a unique compounding risk. With roughly 62 extreme heat days annually, the density of the informal built environment creates localized heat islands where temperatures remain trapped long after sunset. For children in these zones, the recovery period is non-existent, leading to chronic sleep deprivation and cognitive fatigue.</p>
 <p>In Niamey, the scale of exposure is even more stark. Surpassing 110 days of extreme heat annually, the city exists in a near-permanent state of thermal stress. Adaptation readiness remains hindered by the lack of modular cooling infrastructure. Data indicates that without structural interventions, the sheer volume of high-heat hours will effectively truncate the academic calendar by up to 25% by 2040.</p>
 </div>
-<div class="data-visual-placeholder thin-border h-80 flex items-center justify-center relative group">
-<div class="absolute inset-0 opacity-20 pointer-events-none">
-
-</div>
-<div class="text-center z-10 px-6">
-<span class="material-symbols-outlined text-primary text-4xl mb-2">bubble_chart</span>
-<p class="font-label-caps text-label-caps uppercase">Interactive: Bubble Chart</p>
-<p class="text-[11px] text-on-surface-variant mt-2">Cities vs. Adaptation Readiness Score (1-100)</p>
+<div class="bg-surface-container-low p-6 border border-outline-variant h-80">
+<canvas id="chartCities"></canvas>
 </div>
 </div>
 </div>
@@ -209,13 +202,8 @@
 <section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-stack-xl border-t border-outline-variant pt-stack-lg">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
 <div class="order-2 lg:order-1">
-<div class="data-visual-placeholder thin-border h-80 flex items-center justify-center relative overflow-hidden">
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-[1]"></div>
-<div class="absolute inset-0 bg-cover bg-center grayscale opacity-40" data-alt="A sophisticated data visualization line chart showing a downward trending orange line against a dark grid background. The axes are labeled with technical typography. The aesthetic is clean, professional data journalism style with a dark mode palette and vibrant orange highlights." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAhAJCMeBgMH4KXodIHPwS4YkV9zdoz-KJADH8_wCpgefTGS7sxukrfRl_VHtnpLw0OQCH6guj003sFtI4N8dc13a4ueAyjAfRLiGiNVWzLUwVj3zVn09CWkk2ry-x1EahoX2StWc_JK8x3QsA2UGARNAqXyEVX-ODOG8CIU7VPp-lqddSgsLjAq8hUNqbT7EvFmHEUAH4TaL5JgyQlW8eeb-fLhNSTmdDYedCKH-APRmPdHdqimFRGkd--A18evgSprwRAkg5CcsoS')"></div>
-<div class="text-center z-10 px-6">
-<span class="material-symbols-outlined text-primary text-4xl mb-2">show_chart</span>
-<p class="font-label-caps text-label-caps uppercase">Visualization: Thermal Degradation</p>
-<p class="text-[11px] text-on-surface-variant mt-2">Correlation: Temperature vs. Standardized Learning Scores</p>
+<div class="bg-surface-container-low p-6 border border-outline-variant h-80">
+<canvas id="chartCognitive"></canvas>
 </div>
 </div>
 </div>
@@ -298,10 +286,11 @@
 <div class="font-headline-lg text-headline-lg text-on-surface uppercase tracking-tighter font-bold">HAZARD ZONES</div>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-md">
 A H Heuristics Project — mapping the geography of human exposure to environmental hazards.
-Investigating where extreme heat, toxic air, flooding, and demographic pressure collide.
+Investigating where extreme heat, toxic air, flooding, and demographic pressure collide with the
+weakest educational and institutional buffers on Earth.
 </p>
 <div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">
-© 2026 HAZARD ZONES. A H HEURISTICS PROJECT.
+&copy; 2026 HAZARD ZONES. A H HEURISTICS PROJECT.
 </div>
 </div>
 <div class="grid grid-cols-2 gap-stack-lg">
@@ -333,93 +322,41 @@ Investigating where extreme heat, toxic air, flooding, and demographic pressure 
         });
     </script>
 
-<div class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-lg border-l-4 border-primary-container pl-6 uppercase">Frontline Cities: Heat Days vs. Adaptation Readiness</h2>
-<div class="bg-surface-container-low p-6 border border-outline-variant" style="max-width:900px;margin:0 auto;">
-<canvas id="chartCities" height="400"></canvas>
-</div>
-</div>
-<div class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-lg border-l-4 border-primary-container pl-6 uppercase">Temperature &amp; Cognitive Decline</h2>
-<div class="bg-surface-container-low p-6 border border-outline-variant" style="max-width:900px;margin:0 auto;">
-<canvas id="chartCognitive" height="350"></canvas>
-</div>
-</div>
 <script>
 (function() {
 // Bubble chart: Cities vs Adaptation
-var ctx1 = document.getElementById('chartCities').getContext('2d');
-new Chart(ctx1, {
-    type: 'bubble',
-    data: {
-        datasets: [
-            { label: 'Karachi', data: [{x: 62, y: 24, r: 22}], backgroundColor: 'rgba(240,102,32,0.7)' },
-            { label: 'Niamey', data: [{x: 110, y: 18, r: 18}], backgroundColor: 'rgba(240,102,32,0.7)' },
-            { label: 'Dhaka', data: [{x: 78, y: 28, r: 28}], backgroundColor: 'rgba(240,102,32,0.7)' },
-            { label: 'Lagos', data: [{x: 55, y: 32, r: 30}], backgroundColor: 'rgba(240,102,32,0.7)' },
-            { label: 'Kolkata', data: [{x: 85, y: 22, r: 25}], backgroundColor: 'rgba(240,102,32,0.7)' },
-            { label: 'Jakarta', data: [{x: 48, y: 35, r: 27}], backgroundColor: 'rgba(240,102,32,0.7)' },
-            { label: 'Manila', data: [{x: 52, y: 30, r: 23}], backgroundColor: 'rgba(240,102,32,0.7)' },
-            { label: 'Khartoum', data: [{x: 95, y: 15, r: 16}], backgroundColor: 'rgba(240,102,32,0.7)' }
-        ]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { display: false },
-            tooltip: { callbacks: { label: function(c) { return c.dataset.label + ': ' + c.raw.x + ' heat days, readiness ' + c.raw.y; } } }
-        },
-        scales: {
-            x: {
-                title: { display: true, text: 'Extreme Heat Days (>38°C) Annually', color: '#a88a7f' },
-                ticks: { color: '#a88a7f' }, grid: { color: 'rgba(168,138,127,0.15)' }
-            },
-            y: {
-                title: { display: true, text: 'Adaptation Readiness (out of 100)', color: '#a88a7f' },
-                ticks: { color: '#a88a7f' }, grid: { color: 'rgba(168,138,127,0.15)' },
-                min: 0, max: 60
-            }
-        }
+var c1 = document.getElementById('chartCities');
+if (c1) { new Chart(c1, { type: 'bubble', data: { datasets: [
+    { label: 'Karachi', data: [{x:62,y:24,r:22}], backgroundColor: 'rgba(240,102,32,0.7)' },
+    { label: 'Niamey', data: [{x:110,y:18,r:18}], backgroundColor: 'rgba(240,102,32,0.7)' },
+    { label: 'Dhaka', data: [{x:78,y:28,r:28}], backgroundColor: 'rgba(240,102,32,0.7)' },
+    { label: 'Lagos', data: [{x:55,y:32,r:30}], backgroundColor: 'rgba(240,102,32,0.7)' },
+    { label: 'Kolkata', data: [{x:85,y:22,r:25}], backgroundColor: 'rgba(240,102,32,0.7)' },
+    { label: 'Jakarta', data: [{x:48,y:35,r:27}], backgroundColor: 'rgba(240,102,32,0.7)' },
+    { label: 'Manila', data: [{x:52,y:30,r:23}], backgroundColor: 'rgba(240,102,32,0.7)' },
+    { label: 'Khartoum', data: [{x:95,y:15,r:16}], backgroundColor: 'rgba(240,102,32,0.7)' }
+]}, options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#e5e2e1', font: { family: 'Inter' } } },
+        tooltip: { callbacks: { label: function(c) { return c.dataset.label + ': ' + c.raw.x + ' heat days, readiness ' + c.raw.y; } } } },
+    scales: {
+        x: { title: { display: true, text: 'Extreme Heat Days (>38°C) Annually', color: '#a88a7f' }, ticks: { color: '#a88a7f' }, grid: { color: 'rgba(168,138,127,0.15)' } },
+        y: { title: { display: true, text: 'Adaptation Readiness (out of 100)', color: '#a88a7f' }, ticks: { color: '#a88a7f' }, grid: { color: 'rgba(168,138,127,0.15)' }, min: 0, max: 60 }
     }
-});
+}}); }
 
 // Line chart: Temperature vs Cognitive Decline
-var ctx2 = document.getElementById('chartCognitive').getContext('2d');
-new Chart(ctx2, {
-    type: 'line',
-    data: {
-        labels: ['30°C', '32°C', '34°C', '36°C', '38°C', '40°C', '42°C'],
-        datasets: [{
-            label: 'Cognitive Performance Index',
-            data: [100, 97, 93, 87, 78, 66, 52],
-            borderColor: '#f06620',
-            backgroundColor: 'rgba(240,102,32,0.1)',
-            fill: true,
-            tension: 0.3,
-            pointBackgroundColor: '#f06620',
-            pointRadius: 5
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { labels: { color: '#e5e2e1', font: { family: 'Inter' } } }
-        },
-        scales: {
-            x: {
-                title: { display: true, text: 'Ambient Temperature', color: '#a88a7f' },
-                ticks: { color: '#a88a7f' }, grid: { color: 'rgba(168,138,127,0.15)' }
-            },
-            y: {
-                title: { display: true, text: 'Cognitive Performance (index)', color: '#a88a7f' },
-                ticks: { color: '#a88a7f' }, grid: { color: 'rgba(168,138,127,0.15)' },
-                min: 40, max: 105
-            }
-        }
+var c2 = document.getElementById('chartCognitive');
+if (c2) { new Chart(c2, { type: 'line', data: {
+    labels: ['30°C','32°C','34°C','36°C','38°C','40°C','42°C'],
+    datasets: [{ label: 'Cognitive Performance Index', data: [100,97,93,87,78,66,52],
+        borderColor: '#f06620', backgroundColor: 'rgba(240,102,32,0.1)', fill: true, tension: 0.3, pointBackgroundColor: '#f06620', pointRadius: 5 }]
+}, options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#e5e2e1', font: { family: 'Inter' } } } },
+    scales: {
+        x: { title: { display: true, text: 'Ambient Temperature', color: '#a88a7f' }, ticks: { color: '#a88a7f' }, grid: { color: 'rgba(168,138,127,0.15)' } },
+        y: { title: { display: true, text: 'Cognitive Performance (index)', color: '#a88a7f' }, ticks: { color: '#a88a7f' }, grid: { color: 'rgba(168,138,127,0.15)' }, min: 40, max: 105 }
     }
-});
+}}); }
 })();
 </script>
 

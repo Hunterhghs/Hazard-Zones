@@ -167,8 +167,7 @@
 <a href="outlook.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">Outlook</a>
 </nav>
 <div class="hidden md:block font-label-caps text-label-caps text-primary-container uppercase tracking-widest">A H Heuristics Project</div>
-</div>
-</header>
+</div></header>
 <main class="pt-20">
 <!-- Hero Section -->
 <section class="min-h-[819px] flex flex-col justify-center px-margin-desktop max-w-container-max mx-auto py-stack-xl">
@@ -204,23 +203,9 @@
 <p>MENA river deltas, while slightly higher at 34%, still fall dangerously short of the 58% OECD baseline. This shortfall limits the local labor force's ability to pivot away from climate-exposed primary sectors, locking millions into an economic structure that collapses under the weight of rising temperatures.</p>
 </div>
 </div>
-<div class="col-span-12 md:col-start-7 md:col-span-6 bg-[#1A1A1A] p-10 border border-surface-variant">
-<div class="flex items-end justify-between h-64 gap-4">
-<!-- Bar Chart Placeholder -->
-<div class="flex flex-col items-center w-full">
-<div class="bg-surface-variant w-full h-[31%] transition-all hover:bg-hazard-orange"></div>
-<span class="font-label-caps text-[10px] mt-4 uppercase">Sahel</span>
-</div>
-<div class="flex flex-col items-center w-full">
-<div class="bg-surface-variant w-full h-[58%] transition-all hover:bg-hazard-orange"></div>
-<span class="font-label-caps text-[10px] mt-4 uppercase">MENA Deltas</span>
-</div>
-<div class="flex flex-col items-center w-full">
-<div class="bg-hazard-orange w-full h-[100%]"></div>
-<span class="font-label-caps text-[10px] mt-4 uppercase">OECD Baseline</span>
-</div>
-</div>
-<div class="mt-8 pt-6 border-t border-surface-variant flex justify-between">
+<div class="col-span-12 md:col-start-7 md:col-span-6 bg-[#1A1A1A] p-6 border border-surface-variant">
+<canvas id="chartAttainment"></canvas>
+<div class="mt-4 pt-4 border-t border-surface-variant flex justify-between">
 <span class="font-label-caps text-label-caps text-on-surface-variant">SOURCE: UNESCO 2024 MONITOR</span>
 <span class="font-label-caps text-label-caps text-on-surface-variant">UNIT: % ATTAINMENT</span>
 </div>
@@ -267,13 +252,7 @@
 </div>
 <div class="loop-container flex items-center justify-center">
 <!-- Central SVG Connectors -->
-<svg class="absolute inset-0 w-full h-full pointer-events-none" viewbox="0 0 1000 500">
-<circle cx="500" cy="250" fill="none" r="180" stroke="#333333" stroke-dasharray="8 8" stroke-width="1"></circle>
-<path class="connector-path" d="M 500 70 A 180 180 0 0 1 680 250" fill="none" stroke="#E8611A" stroke-width="2"></path>
-<path class="connector-path" d="M 680 250 A 180 180 0 0 1 500 430" fill="none" stroke="#E8611A" stroke-width="2"></path>
-<path class="connector-path" d="M 500 430 A 180 180 0 0 1 320 250" fill="none" stroke="#E8611A" stroke-width="2"></path>
-<path class="connector-path" d="M 320 250 A 180 180 0 0 1 500 70" fill="none" stroke="#E8611A" stroke-width="2"></path>
-</svg>
+<canvas id="chartReadiness"></canvas>
 <!-- Nodes -->
 <div class="loop-node border-hazard-orange" style="top: 0; left: 50%; transform: translateX(-50%);">
 <div class="font-label-caps text-[11px]">HIGH HAZARD<br/><span class="text-on-surface-variant font-normal">Climate Exposure</span></div>
@@ -349,10 +328,11 @@
 <div class="font-headline-lg text-headline-lg text-on-surface uppercase tracking-tighter font-bold">HAZARD ZONES</div>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-md">
 A H Heuristics Project — mapping the geography of human exposure to environmental hazards.
-Investigating where extreme heat, toxic air, flooding, and demographic pressure collide.
+Investigating where extreme heat, toxic air, flooding, and demographic pressure collide with the
+weakest educational and institutional buffers on Earth.
 </p>
 <div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">
-© 2026 HAZARD ZONES. A H HEURISTICS PROJECT.
+&copy; 2026 HAZARD ZONES. A H HEURISTICS PROJECT.
 </div>
 </div>
 <div class="grid grid-cols-2 gap-stack-lg">
@@ -395,101 +375,39 @@ Investigating where extreme heat, toxic air, flooding, and demographic pressure 
         });
     </script>
 
-<div class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-lg border-l-4 border-primary-container pl-6 uppercase">Post-Secondary Attainment: Hazard Zones vs. OECD</h2>
-<div class="bg-surface-container-low p-6 border border-outline-variant" style="max-width:900px;margin:0 auto;">
-<canvas id="chartAttainment" height="350"></canvas>
-</div>
-</div>
-<div class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-lg border-l-4 border-primary-container pl-6 uppercase">Adaptation Readiness: Regional Scores</h2>
-<div class="bg-surface-container-low p-6 border border-outline-variant" style="max-width:900px;margin:0 auto;">
-<canvas id="chartReadiness" height="350"></canvas>
-</div>
-</div>
 <script>
 (function() {
 // Grouped bar: Tertiary Attainment
-var ctx1 = document.getElementById('chartAttainment').getContext('2d');
-new Chart(ctx1, {
-    type: 'bar',
-    data: {
-        labels: ['Sahel', 'W. Africa', 'MENA Deltas', 'LatAm Dry Corr.', 'Indo-Gangetic', 'OECD Baseline'],
-        datasets: [{
-            label: 'Tertiary Attainment (%)',
-            data: [18, 22, 34, 28, 25, 58],
-            backgroundColor: '#f06620',
-            borderRadius: 2
-        }, {
-            label: 'Adaptation Threshold (~45%)',
-            data: [45, 45, 45, 45, 45, 45],
-            backgroundColor: 'rgba(156, 202, 255, 0.3)',
-            borderColor: '#9ccaff',
-            borderWidth: 2,
-            borderDash: [6, 4],
-            type: 'line',
-            fill: false,
-            pointRadius: 0
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { labels: { color: '#e5e2e1', font: { family: 'Inter' } } }
-        },
-        scales: {
-            x: { ticks: { color: '#e5e2e1', font: { family: 'Space Grotesk', size: 12, weight: '600' } }, grid: { display: false } },
-            y: { ticks: { color: '#a88a7f' }, grid: { color: 'rgba(168,138,127,0.15)' }, max: 70,
-                title: { display: true, text: 'Percentage (%)', color: '#a88a7f' } }
-        }
+var c1 = document.getElementById('chartAttainment');
+if (c1) { new Chart(c1, { type: 'bar', data: {
+    labels: ['Sahel','W. Africa','MENA Deltas','LatAm Dry','Indo-Gangetic','OECD'],
+    datasets: [
+        { label: 'Tertiary Attainment (%)', data: [18,22,34,28,25,58], backgroundColor: '#f06620', borderRadius: 2 },
+        { label: 'Adaptation Threshold (~45%)', data: [45,45,45,45,45,45], backgroundColor: 'rgba(156,202,255,0.3)', borderColor: '#9ccaff', borderWidth: 2, borderDash: [6,4], type: 'line', fill: false, pointRadius: 0 }
+    ]
+}, options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#e5e2e1', font: { family: 'Inter' } } } },
+    scales: {
+        x: { ticks: { color: '#e5e2e1', font: { family: 'Space Grotesk', size: 12, weight: '600' } }, grid: { display: false } },
+        y: { ticks: { color: '#a88a7f' }, grid: { color: 'rgba(168,138,127,0.15)' }, max: 70, title: { display: true, text: 'Percentage (%)', color: '#a88a7f' } }
     }
-});
+}}); }
 
 // Radar: Adaptation Readiness
-var ctx2 = document.getElementById('chartReadiness').getContext('2d');
-new Chart(ctx2, {
-    type: 'radar',
-    data: {
-        labels: ['Institutional Capacity', 'Infrastructure', 'Education Base', 'Health Systems', 'Economic Resilience', 'Climate Finance Access'],
-        datasets: [{
-            label: 'Sahel',
-            data: [18, 12, 15, 22, 14, 20],
-            borderColor: '#f06620',
-            backgroundColor: 'rgba(240,102,32,0.15)',
-            borderWidth: 2
-        }, {
-            label: 'MENA Deltas',
-            data: [34, 28, 32, 38, 30, 35],
-            borderColor: '#9ccaff',
-            backgroundColor: 'rgba(156,202,255,0.1)',
-            borderWidth: 2
-        }, {
-            label: 'OECD Benchmark',
-            data: [72, 78, 65, 80, 75, 70],
-            borderColor: '#c8c6c5',
-            backgroundColor: 'transparent',
-            borderWidth: 2,
-            borderDash: [4, 4]
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { labels: { color: '#e5e2e1', font: { family: 'Inter' } } }
-        },
-        scales: {
-            r: {
-                angleLines: { color: 'rgba(168,138,127,0.3)' },
-                grid: { color: 'rgba(168,138,127,0.2)' },
-                pointLabels: { color: '#e5e2e1', font: { family: 'Space Grotesk', size: 11 } },
-                ticks: { color: '#a88a7f', backdropColor: 'transparent' },
-                suggestedMin: 0, suggestedMax: 90
-            }
-        }
-    }
-});
+var c2 = document.getElementById('chartReadiness');
+if (c2) { new Chart(c2, { type: 'radar', data: {
+    labels: ['Institutional','Infrastructure','Education','Health','Economy','Climate Finance'],
+    datasets: [
+        { label: 'Sahel', data: [18,12,15,22,14,20], borderColor: '#f06620', backgroundColor: 'rgba(240,102,32,0.15)', borderWidth: 2 },
+        { label: 'MENA Deltas', data: [34,28,32,38,30,35], borderColor: '#9ccaff', backgroundColor: 'rgba(156,202,255,0.1)', borderWidth: 2 },
+        { label: 'OECD Benchmark', data: [72,78,65,80,75,70], borderColor: '#c8c6c5', backgroundColor: 'transparent', borderWidth: 2, borderDash: [4,4] }
+    ]
+}, options: { responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#e5e2e1', font: { family: 'Inter' } } } },
+    scales: { r: { angleLines: { color: 'rgba(168,138,127,0.3)' }, grid: { color: 'rgba(168,138,127,0.2)' },
+        pointLabels: { color: '#e5e2e1', font: { family: 'Space Grotesk', size: 11 } },
+        ticks: { color: '#a88a7f', backdropColor: 'transparent' }, suggestedMin: 0, suggestedMax: 90 } }
+}}); }
 })();
 </script>
 

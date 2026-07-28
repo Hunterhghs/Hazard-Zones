@@ -128,8 +128,7 @@
 <a href="outlook.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">Outlook</a>
 </nav>
 <div class="hidden md:block font-label-caps text-label-caps text-primary-container uppercase tracking-widest">A H Heuristics Project</div>
-</div>
-</header>
+</div></header>
 <main class="pt-24 pb-stack-xl">
 <!-- HERO SECTION -->
 <section class="px-margin-desktop py-stack-xl max-w-container-max mx-auto border-b border-outline-variant relative overflow-hidden">
@@ -216,29 +215,8 @@
 </div>
 </div>
 </div>
-<div class="bg-surface-container-high p-8 border border-outline-variant h-[400px] flex flex-col justify-center relative overflow-hidden">
-<div class="absolute inset-0 opacity-20">
-
-</div>
-<div class="relative z-10 space-y-8">
-<div class="space-y-2">
-<div class="flex justify-between text-xs font-label-caps text-on-surface-variant uppercase"><span>Population (Millions)</span></div>
-<div class="w-full bg-surface-variant h-8">
-<div class="bg-primary-container h-full w-[90%]" style="transition: width 1s ease-out"></div>
-</div>
-</div>
-<div class="space-y-2">
-<div class="flex justify-between text-xs font-label-caps text-on-surface-variant uppercase"><span>Environmental Intensity (%)</span></div>
-<div class="w-full bg-surface-variant h-8">
-<div class="bg-primary-container h-full w-[75%]" style="transition: width 1s ease-out"></div>
-</div>
-</div>
-<div class="space-y-2">
-<div class="flex justify-between text-xs font-label-caps text-on-surface-variant uppercase"><span>Adaptive Capacity Gap</span></div>
-<div class="w-full bg-surface-variant h-8">
-<div class="bg-primary-container h-full w-[85%]" style="transition: width 1s ease-out"></div>
-</div>
-</div>
+<div class="bg-surface-container-low p-6 border border-outline-variant h-[400px]">
+<canvas id="chartFrontlineBelts"></canvas>
 </div>
 </div>
 </div>
@@ -306,10 +284,11 @@
 <div class="font-headline-lg text-headline-lg text-on-surface uppercase tracking-tighter font-bold">HAZARD ZONES</div>
 <p class="font-body-md text-body-md text-on-surface-variant max-w-md">
 A H Heuristics Project — mapping the geography of human exposure to environmental hazards.
-Investigating where extreme heat, toxic air, flooding, and demographic pressure collide.
+Investigating where extreme heat, toxic air, flooding, and demographic pressure collide with the
+weakest educational and institutional buffers on Earth.
 </p>
 <div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">
-© 2026 HAZARD ZONES. A H HEURISTICS PROJECT.
+&copy; 2026 HAZARD ZONES. A H HEURISTICS PROJECT.
 </div>
 </div>
 <div class="grid grid-cols-2 gap-stack-lg">
@@ -331,25 +310,18 @@ Investigating where extreme heat, toxic air, flooding, and demographic pressure 
 
 
 
-<div class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-lg border-l-4 border-primary-container pl-6 uppercase">Exposed Population by Region</h2>
-<div class="bg-surface-container-low p-6 border border-outline-variant" style="max-width:900px;margin:0 auto;">
-<canvas id="chartFrontlineBelts" height="350"></canvas>
-</div>
-</div>
 <script>
 (function() {
-var ctx = document.getElementById('chartFrontlineBelts').getContext('2d');
+var ctx = document.getElementById('chartFrontlineBelts');
+if (!ctx) return;
 new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Indo-Gangetic', 'Sahel', 'West Africa', 'MENA Deltas', 'LatAm Dry Corridor'],
+        labels: ['Indo-Gangetic', 'Sahel', 'West Africa', 'MENA Deltas', 'LatAm Dry Corr.'],
         datasets: [{
             label: 'Exposed Population (millions)',
             data: [685, 410, 295, 180, 125],
-            backgroundColor: 'rgba(240, 102, 32, 0.7)',
-            borderColor: '#f06620',
-            borderWidth: 1,
+            backgroundColor: '#f06620',
             borderRadius: 2
         }]
     },
@@ -357,19 +329,10 @@ new Chart(ctx, {
         indexAxis: 'y',
         responsive: true,
         maintainAspectRatio: false,
-        plugins: {
-            legend: { display: false }
-        },
+        plugins: { legend: { display: false } },
         scales: {
-            x: {
-                ticks: { color: '#a88a7f', font: { family: 'Inter', size: 12 } },
-                grid: { color: 'rgba(168,138,127,0.15)' },
-                title: { display: true, text: 'Millions', color: '#a88a7f' }
-            },
-            y: {
-                ticks: { color: '#e5e2e1', font: { family: 'Space Grotesk', size: 13, weight: '600' } },
-                grid: { display: false }
-            }
+            x: { ticks: { color: '#a88a7f' }, grid: { color: 'rgba(168,138,127,0.15)' }, title: { display: true, text: 'Millions', color: '#a88a7f' } },
+            y: { ticks: { color: '#e5e2e1', font: { family: 'Space Grotesk', size: 13, weight: '600' } }, grid: { display: false } }
         }
     }
 });
