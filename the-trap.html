@@ -251,8 +251,24 @@
 <h3 class="font-headline-lg text-headline-lg">The Self-Reinforcing Loop</h3>
 </div>
 <div class="loop-container flex items-center justify-center">
-<!-- Central SVG Connectors -->
-<canvas id="chartReadiness"></canvas>
+<!-- SVG connecting arrows -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f06620"/>
+    </marker>
+  </defs>
+  <!-- HIGH HAZARD → LOW LEARNING -->
+  <path d="M 560 60 Q 750 60, 820 180" stroke="#f06620" stroke-width="2" fill="none" class="connector-path" marker-end="url(#arrowhead)"/>
+  <!-- LOW LEARNING → LOW ADAPTATION -->
+  <path d="M 880 260 Q 880 380, 800 420" stroke="#f06620" stroke-width="2" fill="none" class="connector-path" marker-end="url(#arrowhead)"/>
+  <!-- LOW ADAPTATION → PERSISTENT POVERTY -->
+  <path d="M 720 460 Q 550 480, 400 440" stroke="#f06620" stroke-width="2" fill="none" class="connector-path" marker-end="url(#arrowhead)"/>
+  <!-- PERSISTENT POVERTY → HIGH VULNERABILITY -->
+  <path d="M 320 380 Q 250 300, 200 220" stroke="#f06620" stroke-width="2" fill="none" class="connector-path" marker-end="url(#arrowhead)"/>
+  <!-- HIGH VULNERABILITY → HIGH HAZARD -->
+  <path d="M 180 160 Q 280 60, 440 60" stroke="#f06620" stroke-width="2" fill="none" class="connector-path" marker-end="url(#arrowhead)"/>
+</svg>
 <!-- Nodes -->
 <div class="loop-node border-hazard-orange" style="top: 0; left: 50%; transform: translateX(-50%);">
 <div class="font-label-caps text-[11px]">HIGH HAZARD<br/><span class="text-on-surface-variant font-normal">Climate Exposure</span></div>
@@ -270,6 +286,13 @@
 <div class="font-label-caps text-[11px]">HIGH VULNERABILITY<br/><span class="text-on-surface-variant font-normal">Risk Accumulation</span></div>
 </div>
 </div>
+</div>
+</section>
+<!-- Adaptation Readiness Radar Chart -->
+<section class="py-stack-xl px-margin-desktop max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-lg border-l-4 border-primary-container pl-6 uppercase">Adaptation Readiness: Regional Comparison</h2>
+<div class="bg-surface-container-low p-6 border border-outline-variant max-w-2xl mx-auto" style="height:450px;">
+<canvas id="chartReadiness"></canvas>
 </div>
 </section>
 <!-- Urban Traps Deep Dive -->
