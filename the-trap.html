@@ -1,0 +1,496 @@
+<!-- .nojekyll -->
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Climate–Education Trap — Hazard Zones</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "surface-tint": "#ffb597",
+                    "surface-container-low": "#1c1b1b",
+                    "on-primary-container": "#4d1900",
+                    "on-tertiary-container": "#002b4c",
+                    "surface-variant": "#353534",
+                    "surface-container-high": "#2a2a2a",
+                    "background": "#131313",
+                    "on-tertiary": "#003256",
+                    "tertiary-container": "#1796ef",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "on-surface": "#e5e2e1",
+                    "error": "#ffb4ab",
+                    "surface-container-highest": "#353534",
+                    "on-tertiary-fixed": "#001d35",
+                    "inverse-on-surface": "#313030",
+                    "error-container": "#93000a",
+                    "tertiary": "#9ccaff",
+                    "on-primary-fixed-variant": "#7d2d00",
+                    "inverse-surface": "#e5e2e1",
+                    "on-error": "#690005",
+                    "outline": "#a88a7f",
+                    "tertiary-fixed": "#d0e4ff",
+                    "on-secondary": "#303030",
+                    "outline-variant": "#594138",
+                    "secondary-container": "#474746",
+                    "surface": "#131313",
+                    "on-secondary-container": "#b7b5b4",
+                    "surface-bright": "#3a3939",
+                    "secondary": "#c8c6c5",
+                    "primary": "#ffb597",
+                    "primary-container": "#f06620",
+                    "on-primary": "#581d00",
+                    "on-tertiary-fixed-variant": "#00497a",
+                    "primary-fixed-dim": "#ffb597",
+                    "on-primary-fixed": "#360f00",
+                    "surface-dim": "#131313",
+                    "primary-fixed": "#ffdbcd",
+                    "on-secondary-fixed-variant": "#474746",
+                    "on-surface-variant": "#e1bfb3",
+                    "on-background": "#e5e2e1",
+                    "on-error-container": "#ffdad6",
+                    "inverse-primary": "#a43d00",
+                    "surface-container-lowest": "#0e0e0e",
+                    "secondary-fixed": "#e4e2e1",
+                    "tertiary-fixed-dim": "#9ccaff",
+                    "surface-container": "#201f1f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "stack-xl": "64px",
+                    "stack-lg": "32px",
+                    "stack-md": "16px",
+                    "stack-xs": "4px",
+                    "stack-sm": "8px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "stat-callout": ["Space Grotesk"],
+                    "label-caps": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "display-xl": ["Space Grotesk"],
+                    "headline-lg-mobile": ["Space Grotesk"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "stat-callout": ["48px", {"lineHeight": "1", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            scroll-behavior: smooth;
+        }
+        .text-hazard-orange { color: #E8611A; }
+        .bg-hazard-orange { background-color: #E8611A; }
+        .border-hazard-orange { border-color: #E8611A; }
+        
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .pillar-card {
+            border: 1px solid #333333;
+            background-color: #1A1A1A;
+            transition: border-color 0.3s ease;
+        }
+        .pillar-card:hover {
+            border-color: #E8611A;
+        }
+        
+        .loop-container {
+            position: relative;
+            height: 500px;
+        }
+        .loop-node {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem;
+            border: 1px solid #333333;
+            background: #1A1A1A;
+            z-index: 10;
+        }
+        
+        /* Custom animation for the loop arrows */
+        @keyframes dash {
+            to { stroke-dashoffset: 0; }
+        }
+        .connector-path {
+            stroke-dasharray: 10;
+            stroke-dashoffset: 100;
+            animation: dash 5s linear infinite;
+        }
+    </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="font-body-md text-body-md">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-md border-b border-outline-variant">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<a href="index.html" class="font-headline-lg text-headline-lg font-bold text-primary tracking-tighter uppercase no-underline">HAZARD ZONES</a>
+<nav class="hidden md:flex items-center space-x-10 font-label-caps text-label-caps uppercase tracking-widest">
+<a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">Home</a>
+<a href="heat-cognition.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">Heat &amp; Cognition</a>
+<a href="the-trap.html" class="text-primary border-b-2 border-primary pb-1 transition-colors duration-200 no-underline">The Trap</a>
+<a href="outlook.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">Outlook</a>
+</nav>
+<div class="hidden md:block font-label-caps text-label-caps text-primary-container uppercase tracking-widest">A H Heuristics Project</div>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="min-h-[819px] flex flex-col justify-center px-margin-desktop max-w-container-max mx-auto py-stack-xl">
+<div class="grid grid-cols-12 gap-gutter">
+<div class="col-span-12 md:col-span-8">
+<span class="font-label-caps text-label-caps text-hazard-orange mb-4 block">ENVIRONMENTAL MACROECONOMICS</span>
+<h1 class="font-display-xl text-display-xl mb-6 leading-none">The Climate–Education Trap</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-12">
+                        When high hazard meets low human capital, the result is not just vulnerability — it is a self-reinforcing loop that deepens with each passing year. As extreme weather events intensify, the capacity for generational mobility evaporates.
+                    </p>
+</div>
+<div class="col-span-12 md:col-span-4 flex flex-col justify-end border-l border-surface-variant pl-gutter">
+<div class="mb-4">
+<span class="font-stat-callout text-stat-callout text-hazard-orange block">18-34%</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Tertiary attainment in hazard zones</span>
+</div>
+<div class="pt-4 border-t border-surface-variant">
+<span class="font-stat-callout text-stat-callout text-on-surface block">58%</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">OECD Baseline average</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Attainment Comparison -->
+<section class="bg-surface-container-low py-stack-xl">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-12 gap-gutter items-center">
+<div class="col-span-12 md:col-span-5">
+<h2 class="font-label-caps text-label-caps text-hazard-orange mb-4">DATA ANALYSIS: UNESCO GLOBAL MONITOR</h2>
+<h3 class="font-headline-lg text-headline-lg mb-6">The Education Gap</h3>
+<div class="space-y-4 text-on-surface-variant">
+<p>Recent UNESCO data highlights a stark divergence in human capital development within high-risk climate zones. In the Sahel region, tertiary education attainment lingers at a critical 18%, significantly below the 45% threshold identified by economists as necessary for industrial transition and autonomous climate adaptation.</p>
+<p>MENA river deltas, while slightly higher at 34%, still fall dangerously short of the 58% OECD baseline. This shortfall limits the local labor force's ability to pivot away from climate-exposed primary sectors, locking millions into an economic structure that collapses under the weight of rising temperatures.</p>
+</div>
+</div>
+<div class="col-span-12 md:col-start-7 md:col-span-6 bg-[#1A1A1A] p-10 border border-surface-variant">
+<div class="flex items-end justify-between h-64 gap-4">
+<!-- Bar Chart Placeholder -->
+<div class="flex flex-col items-center w-full">
+<div class="bg-surface-variant w-full h-[31%] transition-all hover:bg-hazard-orange"></div>
+<span class="font-label-caps text-[10px] mt-4 uppercase">Sahel</span>
+</div>
+<div class="flex flex-col items-center w-full">
+<div class="bg-surface-variant w-full h-[58%] transition-all hover:bg-hazard-orange"></div>
+<span class="font-label-caps text-[10px] mt-4 uppercase">MENA Deltas</span>
+</div>
+<div class="flex flex-col items-center w-full">
+<div class="bg-hazard-orange w-full h-[100%]"></div>
+<span class="font-label-caps text-[10px] mt-4 uppercase">OECD Baseline</span>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-surface-variant flex justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant">SOURCE: UNESCO 2024 MONITOR</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">UNIT: % ATTAINMENT</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Four Pillars -->
+<section class="py-stack-xl px-margin-desktop max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg mb-12 text-center">Mechanisms of the Trap</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Pillar 1 -->
+<div class="pillar-card p-8 flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-hazard-orange">01. VULNERABILITY AMPLIFICATION</span>
+<h4 class="font-headline-lg text-headline-lg">Labor Market Rigidity</h4>
+<p class="text-on-surface-variant">Limited technical training keeps households tethered to rainfed agriculture or outdoor manual labor. When drought or extreme heatwaves strike, the absence of skills-based mobility means savings are wiped out, preventing the next generation from accessing schooling.</p>
+</div>
+<!-- Pillar 2 -->
+<div class="pillar-card p-8 flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-hazard-orange">02. COGNITIVE DEGRADATION</span>
+<h4 class="font-headline-lg text-headline-lg">Biological Learning Loss</h4>
+<p class="text-on-surface-variant">Extreme heat and PM2.5 concentrations in uninsulated classrooms directly degrade cognitive function. Research shows each 1°C increase above optimal learning temperatures lowers progression odds by 8-12%, systematically eroding the "educational return on investment."</p>
+</div>
+<!-- Pillar 3 -->
+<div class="pillar-card p-8 flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-hazard-orange">03. URBAN TRAPS</span>
+<h4 class="font-headline-lg text-headline-lg">Credential-Less Migration</h4>
+<p class="text-on-surface-variant">Rural migrants fleeing climate failure enter megacities with thin credentials. Without certificates, they are funneled into hazard-prone slums (flood zones/heat islands). Growth in these hazard-exposed slums is currently 2.4x faster than in formal corridors.</p>
+</div>
+<!-- Pillar 4 -->
+<div class="pillar-card p-8 flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-hazard-orange">04. DEMOGRAPHIC PARADOX</span>
+<h4 class="font-headline-lg text-headline-lg">Systemic Saturation</h4>
+<p class="text-on-surface-variant">Regions with highest fertility rates (3.2–4.8 TFR) possess the weakest tertiary systems. Massive youth bulges outpace classroom capacity, leading to a "hollowing out" of the middle class exactly when adaptive expertise is most critical.</p>
+</div>
+</div>
+</section>
+<!-- Feedback Loop Diagram -->
+<section class="bg-surface-container-lowest py-stack-xl border-y border-surface-variant">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-label-caps text-label-caps text-hazard-orange mb-4">SYSTEMIC DYNAMICS</h2>
+<h3 class="font-headline-lg text-headline-lg">The Self-Reinforcing Loop</h3>
+</div>
+<div class="loop-container flex items-center justify-center">
+<!-- Central SVG Connectors -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" viewbox="0 0 1000 500">
+<circle cx="500" cy="250" fill="none" r="180" stroke="#333333" stroke-dasharray="8 8" stroke-width="1"></circle>
+<path class="connector-path" d="M 500 70 A 180 180 0 0 1 680 250" fill="none" stroke="#E8611A" stroke-width="2"></path>
+<path class="connector-path" d="M 680 250 A 180 180 0 0 1 500 430" fill="none" stroke="#E8611A" stroke-width="2"></path>
+<path class="connector-path" d="M 500 430 A 180 180 0 0 1 320 250" fill="none" stroke="#E8611A" stroke-width="2"></path>
+<path class="connector-path" d="M 320 250 A 180 180 0 0 1 500 70" fill="none" stroke="#E8611A" stroke-width="2"></path>
+</svg>
+<!-- Nodes -->
+<div class="loop-node border-hazard-orange" style="top: 0; left: 50%; transform: translateX(-50%);">
+<div class="font-label-caps text-[11px]">HIGH HAZARD<br/><span class="text-on-surface-variant font-normal">Climate Exposure</span></div>
+</div>
+<div class="loop-node" style="top: 30%; right: 10%;">
+<div class="font-label-caps text-[11px]">LOW LEARNING<br/><span class="text-on-surface-variant font-normal">Cognitive/Resource Loss</span></div>
+</div>
+<div class="loop-node" style="bottom: 0; left: 70%; transform: translateX(-50%);">
+<div class="font-label-caps text-[11px]">LOW ADAPTATION<br/><span class="text-on-surface-variant font-normal">Skill-Locked Economy</span></div>
+</div>
+<div class="loop-node" style="bottom: 0; left: 30%; transform: translateX(-50%);">
+<div class="font-label-caps text-[11px]">PERSISTENT POVERTY<br/><span class="text-on-surface-variant font-normal">Inelastic Savings</span></div>
+</div>
+<div class="loop-node" style="top: 30%; left: 10%;">
+<div class="font-label-caps text-[11px]">HIGH VULNERABILITY<br/><span class="text-on-surface-variant font-normal">Risk Accumulation</span></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Urban Traps Deep Dive -->
+<section class="py-stack-xl">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="relative overflow-hidden bg-surface-container-high border border-surface-variant">
+<div class="absolute right-0 top-0 w-1/2 h-full opacity-30 grayscale hover:grayscale-0 transition-all">
+<img class="w-full h-full object-cover" data-alt="A gritty, high-contrast aerial shot of a dense, unplanned urban settlement in a flood-prone coastal delta. The image is shot in a dark, editorial style with deep shadows and harsh orange highlights reflecting off stagnant water between tight corrugated metal roofs. The atmosphere is heavy and humid, conveying a sense of urgent climate vulnerability and systemic entrapment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1lvhSXKYxDvUhCJENYwmHhuYYJbqLpSiRNbSLihCEWXorHp9zn3aAVuUL7iqTxReymu7wZpWkI2spt_NnFZnRpJicbnudVJB6FQir4UI6tFHuWGKvbPssnXwaphr8ik35qzQcBGjeeppKEy-3ngC99-Ji0NmFmbpnUE4e2du-f20onborb7JBnXuZKztXNp3NuFhz7BP6frjMeL7yjipdnaHRPj-fu7DejOoUJt72FtSIo6yF2oMqj9ZWVyiKtpanf6YM_wpBa8Be"/>
+</div>
+<div class="p-16 relative z-10 w-full md:w-3/5">
+<h2 class="font-label-caps text-label-caps text-hazard-orange mb-6">SPATIAL INEQUALITY</h2>
+<h3 class="font-display-xl text-[48px] leading-tight mb-8">Urban Growth in Harm's Way</h3>
+<div class="font-body-lg text-body-lg text-on-surface-variant mb-10 space-y-6">
+<p>As agricultural yields collapse due to erratic rainfall patterns, rural populations are forced into rapid, unmanaged urban migration. These migrants, lacking the formal credentials to access jobs in safe, regulated economic zones, are forced into informal settlements located in topographically hazardous areas.</p>
+<p>This "credential-less flight" creates a geography of risk where the most climate-vulnerable populations are also the most spatially marginalized. The data suggests these informal enclaves are not temporary transition zones but permanent traps where social mobility is limited by the recurring cost of disaster recovery.</p>
+</div>
+<div class="inline-block border-2 border-hazard-orange p-6 bg-black/40">
+<span class="font-stat-callout text-stat-callout text-hazard-orange block">2.4×</span>
+<span class="font-label-caps text-label-caps uppercase">Urban growth rate in hazard slums vs. safe corridors</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Metrics Row -->
+<section class="pb-stack-xl px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="border border-surface-variant p-6 flex flex-col justify-between h-40">
+<span class="font-label-caps text-label-caps text-on-surface-variant">DEMOGRAPHIC LOAD</span>
+<span class="font-stat-callout text-stat-callout text-on-surface">3.2–4.8</span>
+<span class="text-[10px] uppercase text-on-surface-variant">Regional Total Fertility Rate</span>
+</div>
+<div class="border border-surface-variant p-6 flex flex-col justify-between h-40">
+<span class="font-label-caps text-label-caps text-on-surface-variant">TRANSITION THRESHOLD</span>
+<span class="font-stat-callout text-stat-callout text-on-surface">~45%</span>
+<span class="text-[10px] uppercase text-on-surface-variant">Min. Post-Secondary Attainment</span>
+</div>
+<div class="border border-hazard-orange p-6 flex flex-col justify-between h-40 bg-surface-container-low">
+<span class="font-label-caps text-label-caps text-hazard-orange">SLUM MULTIPLIER</span>
+<span class="font-stat-callout text-stat-callout text-hazard-orange">2.4×</span>
+<span class="text-[10px] uppercase text-on-surface-variant">Hazard-Exposure Acceleration</span>
+</div>
+<div class="border border-surface-variant p-6 flex flex-col justify-between h-40">
+<span class="font-label-caps text-label-caps text-on-surface-variant">CRITICAL LOW (SAHEL)</span>
+<span class="font-stat-callout text-stat-callout text-on-surface">18%</span>
+<span class="text-[10px] uppercase text-on-surface-variant">Tertiary Attainment Level</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+
+<footer class="bg-surface-dim mt-stack-xl border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="space-y-6">
+<div class="font-headline-lg text-headline-lg text-on-surface uppercase tracking-tighter font-bold">HAZARD ZONES</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+A H Heuristics Project — mapping the geography of human exposure to environmental hazards.
+Investigating where extreme heat, toxic air, flooding, and demographic pressure collide.
+</p>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">
+© 2026 HAZARD ZONES. A H HEURISTICS PROJECT.
+</div>
+</div>
+<div class="grid grid-cols-2 gap-stack-lg">
+<div class="flex flex-col space-y-4">
+<h4 class="font-label-caps text-label-caps text-primary uppercase">Navigate</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary underline-offset-4 no-underline" href="index.html">Home</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary underline-offset-4 no-underline" href="heat-cognition.html">Heat &amp; Cognition</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary underline-offset-4 no-underline" href="the-trap.html">The Trap</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary underline-offset-4 no-underline" href="outlook.html">Outlook</a>
+</div>
+<div class="flex flex-col space-y-4">
+<h4 class="font-label-caps text-label-caps text-primary uppercase">Resources</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary underline-offset-4 no-underline" href="https://hheuristics.com" target="_blank">H Heuristics</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary underline-offset-4 no-underline" href="https://open.substack.com/pub/hheuristics/p/hazard-zones-the-geography-of-human" target="_blank">Original Article</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+        // Simple intersection observer for subtle fade-in effects
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.pillar-card, .loop-node').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(20px)";
+            el.style.transition = "all 0.6s ease-out";
+            observer.observe(el);
+        });
+    </script>
+
+<div class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-lg border-l-4 border-primary-container pl-6 uppercase">Post-Secondary Attainment: Hazard Zones vs. OECD</h2>
+<div class="bg-surface-container-low p-6 border border-outline-variant" style="max-width:900px;margin:0 auto;">
+<canvas id="chartAttainment" height="350"></canvas>
+</div>
+</div>
+<div class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-lg border-l-4 border-primary-container pl-6 uppercase">Adaptation Readiness: Regional Scores</h2>
+<div class="bg-surface-container-low p-6 border border-outline-variant" style="max-width:900px;margin:0 auto;">
+<canvas id="chartReadiness" height="350"></canvas>
+</div>
+</div>
+<script>
+(function() {
+// Grouped bar: Tertiary Attainment
+var ctx1 = document.getElementById('chartAttainment').getContext('2d');
+new Chart(ctx1, {
+    type: 'bar',
+    data: {
+        labels: ['Sahel', 'W. Africa', 'MENA Deltas', 'LatAm Dry Corr.', 'Indo-Gangetic', 'OECD Baseline'],
+        datasets: [{
+            label: 'Tertiary Attainment (%)',
+            data: [18, 22, 34, 28, 25, 58],
+            backgroundColor: '#f06620',
+            borderRadius: 2
+        }, {
+            label: 'Adaptation Threshold (~45%)',
+            data: [45, 45, 45, 45, 45, 45],
+            backgroundColor: 'rgba(156, 202, 255, 0.3)',
+            borderColor: '#9ccaff',
+            borderWidth: 2,
+            borderDash: [6, 4],
+            type: 'line',
+            fill: false,
+            pointRadius: 0
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { labels: { color: '#e5e2e1', font: { family: 'Inter' } } }
+        },
+        scales: {
+            x: { ticks: { color: '#e5e2e1', font: { family: 'Space Grotesk', size: 12, weight: '600' } }, grid: { display: false } },
+            y: { ticks: { color: '#a88a7f' }, grid: { color: 'rgba(168,138,127,0.15)' }, max: 70,
+                title: { display: true, text: 'Percentage (%)', color: '#a88a7f' } }
+        }
+    }
+});
+
+// Radar: Adaptation Readiness
+var ctx2 = document.getElementById('chartReadiness').getContext('2d');
+new Chart(ctx2, {
+    type: 'radar',
+    data: {
+        labels: ['Institutional Capacity', 'Infrastructure', 'Education Base', 'Health Systems', 'Economic Resilience', 'Climate Finance Access'],
+        datasets: [{
+            label: 'Sahel',
+            data: [18, 12, 15, 22, 14, 20],
+            borderColor: '#f06620',
+            backgroundColor: 'rgba(240,102,32,0.15)',
+            borderWidth: 2
+        }, {
+            label: 'MENA Deltas',
+            data: [34, 28, 32, 38, 30, 35],
+            borderColor: '#9ccaff',
+            backgroundColor: 'rgba(156,202,255,0.1)',
+            borderWidth: 2
+        }, {
+            label: 'OECD Benchmark',
+            data: [72, 78, 65, 80, 75, 70],
+            borderColor: '#c8c6c5',
+            backgroundColor: 'transparent',
+            borderWidth: 2,
+            borderDash: [4, 4]
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { labels: { color: '#e5e2e1', font: { family: 'Inter' } } }
+        },
+        scales: {
+            r: {
+                angleLines: { color: 'rgba(168,138,127,0.3)' },
+                grid: { color: 'rgba(168,138,127,0.2)' },
+                pointLabels: { color: '#e5e2e1', font: { family: 'Space Grotesk', size: 11 } },
+                ticks: { color: '#a88a7f', backdropColor: 'transparent' },
+                suggestedMin: 0, suggestedMax: 90
+            }
+        }
+    }
+});
+})();
+</script>
+
+</body></html>

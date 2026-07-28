@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Heat &amp; Cognition — The Productivity Penalty | HAZARD ZONES</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Space+Grotesk:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#001d35",
+                    "on-tertiary-container": "#002b4c",
+                    "on-primary-fixed": "#360f00",
+                    "tertiary-container": "#1796ef",
+                    "on-primary": "#581d00",
+                    "on-secondary": "#303030",
+                    "surface-container-highest": "#353534",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "inverse-on-surface": "#313030",
+                    "on-tertiary": "#003256",
+                    "surface-bright": "#3a3939",
+                    "on-secondary-container": "#b7b5b4",
+                    "tertiary": "#9ccaff",
+                    "on-background": "#e5e2e1",
+                    "surface-variant": "#353534",
+                    "background": "#0D0D0D",
+                    "surface-container-high": "#2a2a2a",
+                    "surface": "#131313",
+                    "surface-container-lowest": "#0e0e0e",
+                    "secondary": "#c8c6c5",
+                    "secondary-container": "#474746",
+                    "surface-container-low": "#1c1b1b",
+                    "primary-container": "#f06620",
+                    "surface-container": "#201f1f",
+                    "primary-fixed": "#ffdbcd",
+                    "on-surface": "#e5e2e1",
+                    "error-container": "#93000a",
+                    "surface-tint": "#ffb597",
+                    "on-primary-container": "#4d1900",
+                    "on-secondary-fixed-variant": "#474746",
+                    "secondary-fixed": "#e4e2e1",
+                    "on-surface-variant": "#e1bfb3",
+                    "on-error": "#690005",
+                    "inverse-surface": "#e5e2e1",
+                    "on-primary-fixed-variant": "#7d2d00",
+                    "error": "#ffb4ab",
+                    "primary": "#E8611A",
+                    "primary-fixed-dim": "#ffb597",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "inverse-primary": "#a43d00",
+                    "tertiary-fixed-dim": "#9ccaff",
+                    "tertiary-fixed": "#d0e4ff",
+                    "on-tertiary-fixed-variant": "#00497a",
+                    "on-error-container": "#ffdad6",
+                    "surface-dim": "#0D0D0D",
+                    "outline-variant": "#333333",
+                    "outline": "#a88a7f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0px",
+                    "lg": "2px",
+                    "xl": "4px",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "stack-xl": "64px",
+                    "stack-lg": "32px",
+                    "margin-mobile": "20px",
+                    "stack-md": "16px",
+                    "margin-desktop": "64px",
+                    "stack-xs": "4px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter", "sans-serif"],
+                    "display-xl": ["Space Grotesk", "sans-serif"],
+                    "body-lg": ["Inter", "sans-serif"],
+                    "label-caps": ["Space Grotesk", "sans-serif"],
+                    "headline-lg-mobile": ["Space Grotesk", "sans-serif"],
+                    "headline-lg": ["Space Grotesk", "sans-serif"],
+                    "stat-callout": ["Space Grotesk", "sans-serif"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "stat-callout": ["48px", {"lineHeight": "1", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0D0D0D;
+            color: #e5e2e1;
+            -webkit-font-smoothing: antialiased;
+        }
+        .thin-border { border: 1px solid #333333; }
+        .hazard-border { border-left: 4px solid #E8611A; }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .data-visual-placeholder {
+            background: linear-gradient(135deg, #1A1A1A 0%, #0D0D0D 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .data-visual-placeholder::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(#333333 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary selection:text-black">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background/90 backdrop-blur-md border-b border-outline-variant">
+<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-headline-lg text-headline-lg font-bold text-primary tracking-tighter cursor-pointer">
+                HAZARD ZONES
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Exposure</a>
+<a class="font-label-caps text-label-caps uppercase tracking-widest text-primary border-b-2 border-primary pb-1" href="#">Heat &amp; Cognition</a>
+<a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">The Trap</a>
+<a class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Outlook</a>
+<button class="bg-primary text-black px-4 py-2 font-label-caps text-[10px] tracking-widest uppercase hover:bg-white transition-all">Live Alerts</button>
+</div>
+<div class="md:hidden">
+<span class="material-symbols-outlined text-primary">menu</span>
+</div>
+</nav>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-stack-xl">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-end">
+<div class="lg:col-span-8">
+<h1 class="font-display-xl text-[48px] md:text-display-xl mb-stack-md leading-none">
+                        Heat, Cognition, and the <span class="text-primary">Productivity Penalty</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                        Extreme heat days above 35–38°C are rising sharply across South Asia, the Sahel, and coastal megacities. That is not only a health risk — it is a learning and labor shock.
+                    </p>
+</div>
+<div class="lg:col-span-4 border-t border-outline-variant pt-stack-sm lg:border-t-0 lg:pt-0">
+<div class="flex flex-col">
+<span class="font-stat-callout text-stat-callout text-primary">−0.8°C</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest leading-relaxed">cognitive penalty per 5°C exceedance, compounding across childhood</span>
+</div>
+</div>
+</div>
+</section>
+<!-- KPI Stat Row -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-stack-xl">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="thin-border p-stack-md bg-surface-container-lowest flex flex-col justify-between aspect-square md:aspect-auto h-48">
+<span class="font-stat-callout text-[40px] text-on-surface">42°C</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant leading-normal">summer classroom temperatures in rural Indo-Gangetic Plain</p>
+</div>
+<div class="thin-border p-stack-md bg-surface-container-lowest flex flex-col justify-between aspect-square md:aspect-auto h-48">
+<span class="font-stat-callout text-[40px] text-on-surface">~40%</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant leading-normal">attendance drop during extreme heat in uncooled schools</p>
+</div>
+<div class="thin-border p-stack-md bg-surface-container-lowest flex flex-col justify-between aspect-square md:aspect-auto h-48">
+<span class="font-stat-callout text-[40px] text-on-surface">80+ µg/m³</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant leading-normal">annual PM₂.₅ in Indo-Gangetic Plain — multiples of WHO guidelines</p>
+</div>
+<div class="thin-border p-stack-md bg-surface-container-lowest flex flex-col justify-between aspect-square md:aspect-auto h-48">
+<span class="font-stat-callout text-[40px] text-on-surface">110 Days</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant leading-normal">extreme heat days above 38°C annually in Niamey</p>
+</div>
+</div>
+</section>
+<!-- Frontline Cities Section -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-stack-xl border-t border-outline-variant pt-stack-lg">
+<h2 class="font-headline-lg text-headline-lg mb-stack-lg uppercase tracking-tighter">Frontline Cities: <span class="text-on-surface-variant font-light italic">Heat vs. Adaptation</span></h2>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<div class="space-y-stack-md text-on-surface-variant">
+<p>The urban thermal profile of Karachi presents a unique compounding risk. With roughly 62 extreme heat days annually, the density of the informal built environment creates localized heat islands where temperatures remain trapped long after sunset. For children in these zones, the recovery period is non-existent, leading to chronic sleep deprivation and cognitive fatigue.</p>
+<p>In Niamey, the scale of exposure is even more stark. Surpassing 110 days of extreme heat annually, the city exists in a near-permanent state of thermal stress. Adaptation readiness remains hindered by the lack of modular cooling infrastructure. Data indicates that without structural interventions, the sheer volume of high-heat hours will effectively truncate the academic calendar by up to 25% by 2040.</p>
+</div>
+<div class="data-visual-placeholder thin-border h-80 flex items-center justify-center relative group">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+
+</div>
+<div class="text-center z-10 px-6">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">bubble_chart</span>
+<p class="font-label-caps text-label-caps uppercase">Interactive: Bubble Chart</p>
+<p class="text-[11px] text-on-surface-variant mt-2">Cities vs. Adaptation Readiness Score (1-100)</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Learning Deficit Section -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-stack-xl border-t border-outline-variant pt-stack-lg">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<div class="order-2 lg:order-1">
+<div class="data-visual-placeholder thin-border h-80 flex items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-[1]"></div>
+<div class="absolute inset-0 bg-cover bg-center grayscale opacity-40" data-alt="A sophisticated data visualization line chart showing a downward trending orange line against a dark grid background. The axes are labeled with technical typography. The aesthetic is clean, professional data journalism style with a dark mode palette and vibrant orange highlights." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAhAJCMeBgMH4KXodIHPwS4YkV9zdoz-KJADH8_wCpgefTGS7sxukrfRl_VHtnpLw0OQCH6guj003sFtI4N8dc13a4ueAyjAfRLiGiNVWzLUwVj3zVn09CWkk2ry-x1EahoX2StWc_JK8x3QsA2UGARNAqXyEVX-ODOG8CIU7VPp-lqddSgsLjAq8hUNqbT7EvFmHEUAH4TaL5JgyQlW8eeb-fLhNSTmdDYedCKH-APRmPdHdqimFRGkd--A18evgSprwRAkg5CcsoS')"></div>
+<div class="text-center z-10 px-6">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">show_chart</span>
+<p class="font-label-caps text-label-caps uppercase">Visualization: Thermal Degradation</p>
+<p class="text-[11px] text-on-surface-variant mt-2">Correlation: Temperature vs. Standardized Learning Scores</p>
+</div>
+</div>
+</div>
+<div class="order-1 lg:order-2">
+<h2 class="font-headline-lg text-headline-lg mb-stack-md uppercase tracking-tighter">The Cognitive Cost of Heat</h2>
+<div class="space-y-stack-md text-on-surface-variant">
+<p>The Climate-Education Trap synthesis reveals a non-linear relationship between thermal stress and executive function. Neurobiological studies suggest that sustained exposure to temperatures exceeding the human thermoregulatory baseline redirects metabolic energy from cognitive processing to physical cooling.</p>
+<p>In developing economies, this results in a "learning leak." For every degree above the optimal threshold, students exhibit measurable declines in retention and problem-solving speed. This penalty is not transient; it compounds annually, effectively widening the global productivity gap before an individual even enters the workforce.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Pollution Amplifier Section -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-stack-xl">
+<div class="bg-surface-container-low thin-border p-stack-lg">
+<h2 class="font-headline-lg text-headline-lg mb-stack-md uppercase tracking-tighter">Pollution Deepens the Damage</h2>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<div class="lg:col-span-8 text-on-surface-variant">
+<p class="mb-4">Environmental hazards do not exist in isolation. In the Indo-Gangetic Plain, the confluence of extreme heat and high PM₂.₅ concentrations creates a synergistic hazard profile. Fine particulate matter crosses the blood-brain barrier, triggering neuroinflammation that is exacerbated by heat-induced vascular stress.</p>
+<p>The data suggests that the presence of heavy pollution doubles the cognitive impact of a heatwave. Populations exposed to annual averages above 80 µg/m³ are effectively operating at a cognitive disadvantage that maps directly to lower long-term economic mobility. This is a quiet crisis of human capital.</p>
+</div>
+<div class="lg:col-span-4">
+<div class="hazard-border bg-black p-stack-md h-full flex flex-col justify-center">
+<span class="material-symbols-outlined text-primary mb-2">warning</span>
+<p class="font-label-caps text-label-caps text-on-surface uppercase leading-tight">
+                                PM₂.₅ above 35 µg/m³ is associated with measurable cognitive decline across exposed populations.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Adaptation Readiness Insight Cards -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-stack-xl">
+<h3 class="font-label-caps text-label-caps uppercase tracking-widest text-primary mb-stack-md">Regional Adaptation Readiness Index</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-container-lowest thin-border p-stack-md">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="font-stat-callout text-[32px] text-on-surface">22/100</span>
+<span class="material-symbols-outlined text-on-surface-variant">south_east</span>
+</div>
+<h4 class="font-label-caps text-label-caps text-on-surface uppercase mb-stack-xs">Sahel Region</h4>
+<p class="text-[13px] text-on-surface-variant">Critical lack of passive cooling architecture and decentralized energy for mechanical ventilation.</p>
+</div>
+<div class="bg-surface-container-lowest thin-border p-stack-md">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="font-stat-callout text-[32px] text-on-surface">31/100</span>
+<span class="material-symbols-outlined text-on-surface-variant">south_east</span>
+</div>
+<h4 class="font-label-caps text-label-caps text-on-surface uppercase mb-stack-xs">South Asian Megacities</h4>
+<p class="text-[13px] text-on-surface-variant">Urban planning inertia and grid instability prevent wide-scale thermal regulation in schools.</p>
+</div>
+<div class="bg-surface-container-lowest thin-border p-stack-md">
+<div class="flex justify-between items-start mb-stack-md">
+<span class="font-stat-callout text-[32px] text-on-surface">35/100</span>
+<span class="material-symbols-outlined text-on-surface-variant">south_east</span>
+</div>
+<h4 class="font-label-caps text-label-caps text-on-surface uppercase mb-stack-xs">Coastal SE Asia</h4>
+<p class="text-[13px] text-on-surface-variant">Rising humidity (wet-bulb risk) outpaces institutional capacity for humidity-aware cooling.</p>
+</div>
+</div>
+</section>
+<!-- Takeaway Box -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto mb-stack-xl">
+<div class="border-2 border-primary p-stack-lg bg-primary/5 relative">
+<div class="absolute -top-4 left-6 bg-primary text-black px-3 py-1 font-label-caps text-[10px] uppercase tracking-widest">
+                    EXECUTIVE SUMMARY
+                </div>
+<p class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface max-w-4xl tracking-tight leading-snug">
+                    Extreme heat is not just a health emergency — it is an <span class="text-primary underline underline-offset-8">education emergency</span>. Without climate-proofed schools and cooling infrastructure, hundreds of millions of students face a compounding learning penalty that follows them into adulthood.
+                </p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-dim border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter px-margin-mobile md:px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div>
+<div class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tighter mb-stack-sm">HAZARD ZONES</div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-stack-md">A H Heuristics Project</p>
+<p class="font-body-md text-on-surface-variant max-w-md opacity-70">
+                    Dedicated to mapping the intersecting hazards of the anthropocene through high-fidelity data journalism and environmental monitoring.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-stack-md">
+<div class="flex flex-col space-y-2">
+<a class="text-on-surface-variant hover:text-primary transition-all duration-300" href="#">Methodology</a>
+<a class="text-on-surface-variant hover:text-primary transition-all duration-300" href="#">Data Sources</a>
+<a class="text-on-surface-variant hover:text-primary transition-all duration-300" href="#">Peer Review</a>
+<a class="text-on-surface-variant hover:text-primary transition-all duration-300" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col space-y-2">
+<a class="text-on-surface-variant hover:text-primary transition-all duration-300" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-all duration-300" href="#">Contact Expert</a>
+<a class="text-on-surface-variant hover:text-primary transition-all duration-300" href="#">Newsletter</a>
+</div>
+</div>
+</div>
+<div class="px-margin-mobile md:px-margin-desktop py-stack-md max-w-container-max mx-auto border-t border-outline-variant/30">
+<p class="text-[10px] font-label-caps text-on-surface-variant tracking-widest">
+                © 2024 GEOGRAPHY OF HUMAN EXPOSURE. ALL RIGHTS RESERVED. DATA REFRESHED HOURLY.
+            </p>
+</div>
+</footer>
+<script>
+        // Micro-interactions for the visual placeholders
+        document.querySelectorAll('.data-visual-placeholder').forEach(box => {
+            box.addEventListener('mouseenter', () => {
+                box.classList.add('border-primary');
+            });
+            box.addEventListener('mouseleave', () => {
+                box.classList.remove('border-primary');
+            });
+        });
+    </script>
+</body></html>

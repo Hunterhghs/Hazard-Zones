@@ -1,0 +1,524 @@
+<!-- .nojekyll -->
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Outlook — Hazard Zones</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#9ccaff",
+                    "outline-variant": "#594138",
+                    "on-secondary-container": "#b7b5b4",
+                    "primary-fixed": "#ffdbcd",
+                    "on-surface-variant": "#e1bfb3",
+                    "on-error": "#690005",
+                    "surface-tint": "#ffb597",
+                    "on-primary": "#581d00",
+                    "surface-dim": "#131313",
+                    "primary-container": "#f06620",
+                    "surface-container-lowest": "#0e0e0e",
+                    "tertiary-fixed-dim": "#9ccaff",
+                    "surface-container-low": "#1c1b1b",
+                    "on-tertiary-container": "#002b4c",
+                    "on-primary-fixed": "#360f00",
+                    "on-error-container": "#ffdad6",
+                    "on-background": "#e5e2e1",
+                    "surface": "#131313",
+                    "surface-container": "#201f1f",
+                    "surface-container-highest": "#353534",
+                    "secondary-container": "#474746",
+                    "primary-fixed-dim": "#ffb597",
+                    "tertiary-fixed": "#d0e4ff",
+                    "on-secondary": "#303030",
+                    "inverse-primary": "#a43d00",
+                    "primary": "#ffb597",
+                    "secondary-fixed": "#e4e2e1",
+                    "on-secondary-fixed-variant": "#474746",
+                    "inverse-on-surface": "#313030",
+                    "on-primary-container": "#4d1900",
+                    "on-tertiary": "#003256",
+                    "tertiary-container": "#1796ef",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "background": "#131313",
+                    "surface-variant": "#353534",
+                    "surface-bright": "#3a3939",
+                    "surface-container-high": "#2a2a2a",
+                    "on-tertiary-fixed-variant": "#00497a",
+                    "outline": "#a88a7f",
+                    "on-primary-fixed-variant": "#7d2d00",
+                    "error-container": "#93000a",
+                    "secondary": "#c8c6c5",
+                    "inverse-surface": "#e5e2e1",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "on-surface": "#e5e2e1",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed": "#001d35",
+                    "hazard-orange": "#e8611a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "stack-xs": "4px",
+                    "stack-sm": "8px",
+                    "margin-mobile": "20px",
+                    "stack-md": "16px",
+                    "margin-desktop": "64px",
+                    "stack-lg": "32px",
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "stack-xl": "64px"
+            },
+            "fontFamily": {
+                    "label-caps": ["Space Grotesk"],
+                    "display-xl": ["Space Grotesk"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Space Grotesk"],
+                    "body-lg": ["Inter"],
+                    "stat-callout": ["Space Grotesk"],
+                    "headline-lg-mobile": ["Space Grotesk"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "display-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "stat-callout": ["48px", {"lineHeight": "1", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            -webkit-font-smoothing: antialiased;
+        }
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .hazard-border {
+            border-left: 4px solid #e8611a;
+        }
+        .thin-border {
+            border: 1px solid #333333;
+        }
+        .bg-noise {
+            background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+            opacity: 0.03;
+        }
+    </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body class="font-body-md">
+<!-- STICKY MASTHEAD -->
+<header class="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-md border-b border-outline-variant">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<a href="index.html" class="font-headline-lg text-headline-lg font-bold text-primary tracking-tighter uppercase no-underline">HAZARD ZONES</a>
+<nav class="hidden md:flex items-center space-x-10 font-label-caps text-label-caps uppercase tracking-widest">
+<a href="index.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">Home</a>
+<a href="heat-cognition.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">Heat &amp; Cognition</a>
+<a href="the-trap.html" class="text-on-surface-variant hover:text-primary transition-colors duration-200 no-underline">The Trap</a>
+<a href="outlook.html" class="text-primary border-b-2 border-primary pb-1 transition-colors duration-200 no-underline">Outlook</a>
+</nav>
+<div class="hidden md:block font-label-caps text-label-caps text-primary-container uppercase tracking-widest">A H Heuristics Project</div>
+</div>
+</header>
+<main class="pt-20">
+<!-- HERO SECTION -->
+<section class="max-w-container-max mx-auto px-margin-desktop py-stack-xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+
+</div>
+<div class="max-w-4xl relative z-10">
+<span class="font-label-caps text-label-caps text-hazard-orange mb-4 block">EXECUTIVE REPORT // 2024</span>
+<h1 class="font-display-xl text-display-xl mb-6">The Development Paradox &amp; Breaking the Loop</h1>
+<p class="font-body-lg text-body-lg text-secondary mb-12 max-w-2xl">
+                    Megacities across the Global South are expanding into floodplains, heat basins, and pollution corridors. GDP rises. Vulnerability rises with it. But the loop can be broken.
+                </p>
+<div class="flex flex-col md:flex-row items-baseline gap-4 pt-8 border-t border-surface-variant">
+<span class="font-stat-callout text-stat-callout text-hazard-orange">2.4 Billion</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant max-w-[200px]">Projected population in hazard zones by 2050</span>
+</div>
+</div>
+</section>
+<!-- THE PARADOX SECTION -->
+<section class="bg-surface-container-low py-stack-xl">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<h2 class="font-headline-lg text-headline-lg mb-stack-lg border-b border-surface-variant pb-4">The Development Paradox South of the Equator</h2>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-5 space-y-6">
+<p class="font-body-md text-on-surface leading-relaxed">
+                            Current urban trajectories in Africa, South Asia, and Latin America exhibit a disturbing correlation: economic activity is concentrating precisely where the climate signal is loudest. In Lagos, Dhaka, and Jakarta, the "economic pull" of the city center is drawing millions into high-risk informal settlements that lack the basic hydraulic or thermal infrastructure to survive a 2°C world.
+                        </p>
+<p class="font-body-md text-on-surface leading-relaxed">
+                            This creates a cycle where regional GDP growth is offset by the recurring costs of disaster recovery. Without a fundamental shift in how human capital is protected, these regions face a "permanently stalled" development state—where the gains of the morning are washed away by the rains of the evening.
+                        </p>
+</div>
+<div class="md:col-span-7 bg-surface p-8 thin-border flex flex-col justify-between min-h-[400px]">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface mb-2">POPULATION PROJECTION // FRONT-LINE REGIONS</h3>
+<p class="text-xs text-on-surface-variant">Aggregate growth in Sub-Saharan Africa &amp; SE Asia through 2100 (in Billions)</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2"><span class="w-3 h-3 bg-hazard-orange"></span> <span class="text-[10px] font-label-caps">PROJECTION</span></div>
+<div class="flex items-center gap-2"><span class="w-3 h-3 bg-surface-variant"></span> <span class="text-[10px] font-label-caps">HISTORICAL</span></div>
+</div>
+</div>
+<div class="relative flex-grow border-l border-b border-surface-variant">
+<!-- SVG Chart Placeholder -->
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- IMBALANCE MATRIX SECTION -->
+<section class="max-w-container-max mx-auto px-margin-desktop py-stack-xl">
+<h2 class="font-headline-lg text-headline-lg mb-stack-lg">The Imbalance Matrix of the Century</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="p-8 bg-surface-container-high thin-border flex flex-col h-full">
+<span class="material-symbols-outlined text-hazard-orange mb-6" style="font-size: 32px;">groups</span>
+<h3 class="font-headline-lg text-2xl mb-4">Population Momentum</h3>
+<p class="font-body-md text-on-surface-variant mb-8 flex-grow">Sub-Saharan Africa and South Asia are set to add 2 billion people by 2100, shifting the global center of gravity to the most vulnerable latitudinal bands.</p>
+<div class="pt-4 border-t border-surface-variant font-label-caps text-hazard-orange text-lg">+2B BY 2100</div>
+</div>
+<div class="p-8 bg-surface-container-high thin-border flex flex-col h-full">
+<span class="material-symbols-outlined text-hazard-orange mb-6" style="font-size: 32px;">factory</span>
+<h3 class="font-headline-lg text-2xl mb-4">Pollution Corridors</h3>
+<p class="font-body-md text-on-surface-variant mb-8 flex-grow">Industrial expansion is tracking along coastal corridors where air stagnation and flood risks are highest, creating systemic risks for global supply chains.</p>
+<div class="pt-4 border-t border-surface-variant font-label-caps text-hazard-orange text-lg">SYSTEMIC RISK</div>
+</div>
+<div class="p-8 bg-surface-container-high thin-border flex flex-col h-full">
+<span class="material-symbols-outlined text-hazard-orange mb-6" style="font-size: 32px;">thunderstorm</span>
+<h3 class="font-headline-lg text-2xl mb-4">Climate Volatility</h3>
+<p class="font-body-md text-on-surface-variant mb-8 flex-grow">Intensifying extreme weather events in regions with thin financial buffers means a single season can wipe out a decade of educational progress.</p>
+<div class="pt-4 border-t border-surface-variant font-label-caps text-hazard-orange text-lg">ZERO BUFFER</div>
+</div>
+</div>
+</section>
+<!-- BREAKING THE LOOP SECTION -->
+<section class="bg-background py-stack-xl">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="flex justify-between items-end mb-stack-lg border-b border-surface-variant pb-4">
+<h2 class="font-headline-lg text-headline-lg">Breaking the Loop: Solutions That Work</h2>
+<a class="font-label-caps text-label-caps text-primary hover:underline mb-1" href="#">VIEW ALL CASE STUDIES</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Card 1 -->
+<div class="group relative overflow-hidden bg-surface-container-lowest thin-border p-1">
+<div class="p-8">
+<h3 class="font-headline-lg text-2xl mb-4 text-primary">Climate-Proof Schools</h3>
+<p class="font-body-md text-on-surface-variant mb-6">Integrating advanced passive cooling, HEPA filtration, and solar micro-grids into school architecture to protect cognitive development during extreme heat and smog events.</p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-xs font-label-caps text-on-surface"><span class="material-symbols-outlined text-hazard-orange text-sm">check_circle</span> 15% improvement in test scores during heatwaves</li>
+<li class="flex items-center gap-2 text-xs font-label-caps text-on-surface"><span class="material-symbols-outlined text-hazard-orange text-sm">check_circle</span> Community cooling hub functionality</li>
+</ul>
+</div>
+<div class="h-1 bg-hazard-orange w-0 group-hover:w-full transition-all duration-500"></div>
+</div>
+<!-- Card 2 -->
+<div class="group relative overflow-hidden bg-surface-container-lowest thin-border p-1">
+<div class="p-8">
+<h3 class="font-headline-lg text-2xl mb-4 text-primary">Applied Technical Institutes</h3>
+<p class="font-body-md text-on-surface-variant mb-6">Localized vocational training for water, urban, and agricultural technicians. Creating a "boots on the ground" workforce specialized in frontline adaptation technology.</p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-xs font-label-caps text-on-surface"><span class="material-symbols-outlined text-hazard-orange text-sm">check_circle</span> Localized grid maintenance expertise</li>
+<li class="flex items-center gap-2 text-xs font-label-caps text-on-surface"><span class="material-symbols-outlined text-hazard-orange text-sm">check_circle</span> 400k+ technicians needed by 2030</li>
+</ul>
+</div>
+<div class="h-1 bg-hazard-orange w-0 group-hover:w-full transition-all duration-500"></div>
+</div>
+<!-- Card 3 -->
+<div class="group relative overflow-hidden bg-surface-container-lowest thin-border p-1">
+<div class="p-8">
+<h3 class="font-headline-lg text-2xl mb-4 text-primary">Cash Transfers &amp; Education</h3>
+<p class="font-body-md text-on-surface-variant mb-6">Shock-responsive social safety nets that trigger automatic payments to families during disasters, specifically conditioned on keeping adolescents in secondary school.</p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-xs font-label-caps text-on-surface"><span class="material-symbols-outlined text-hazard-orange text-sm">check_circle</span> Prevents child labor spikes post-flood</li>
+<li class="flex items-center gap-2 text-xs font-label-caps text-on-surface"><span class="material-symbols-outlined text-hazard-orange text-sm">check_circle</span> Digital identity integration</li>
+</ul>
+</div>
+<div class="h-1 bg-hazard-orange w-0 group-hover:w-full transition-all duration-500"></div>
+</div>
+<!-- Card 4 -->
+<div class="group relative overflow-hidden bg-surface-container-lowest thin-border p-1">
+<div class="p-8">
+<h3 class="font-headline-lg text-2xl mb-4 text-primary">Female Education Access</h3>
+<p class="font-body-md text-on-surface-variant mb-6">Aggressive expansion of secondary and tertiary education for women. The single most effective tool for managing demographic pressure and building resilience.</p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-xs font-label-caps text-on-surface"><span class="material-symbols-outlined text-hazard-orange text-sm">check_circle</span> 2.5x resilience multiplier</li>
+<li class="flex items-center gap-2 text-xs font-label-caps text-on-surface"><span class="material-symbols-outlined text-hazard-orange text-sm">check_circle</span> Direct correlation with GDP stability</li>
+</ul>
+</div>
+<div class="h-1 bg-hazard-orange w-0 group-hover:w-full transition-all duration-500"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- ADAPTATION READINESS RANKING -->
+<section class="bg-surface-container-low py-stack-xl">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="text-center mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg mb-2">Adaptation Readiness: The Gap</h2>
+<p class="font-body-md text-on-surface-variant">Global North vs. Frontline Regions (Index Score 0-100)</p>
+</div>
+<div class="bg-surface p-12 thin-border max-w-4xl mx-auto">
+<div class="space-y-8">
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-label-caps">BENCHMARK (G7 AVERAGE)</span>
+<span class="font-label-caps text-label-caps">68.4</span>
+</div>
+<div class="h-4 w-full bg-surface-variant">
+<div class="h-full bg-on-surface-variant" style="width: 68.4%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-label-caps text-hazard-orange">SAHEL CORRIDOR</span>
+<span class="font-label-caps text-label-caps text-hazard-orange">21.2</span>
+</div>
+<div class="h-4 w-full bg-surface-variant">
+<div class="h-full bg-hazard-orange" style="width: 21.2%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-label-caps text-hazard-orange">GANGES-BRAHMAPUTRA DELTA</span>
+<span class="font-label-caps text-label-caps text-hazard-orange">29.8</span>
+</div>
+<div class="h-4 w-full bg-surface-variant">
+<div class="h-full bg-hazard-orange" style="width: 29.8%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-caps text-label-caps text-hazard-orange">CONGO BASIN</span>
+<span class="font-label-caps text-label-caps text-hazard-orange">18.5</span>
+</div>
+<div class="h-4 w-full bg-surface-variant">
+<div class="h-full bg-hazard-orange" style="width: 18.5%"></div>
+</div>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-surface-variant text-center">
+<p class="text-xs text-on-surface-variant font-label-caps uppercase tracking-widest">Target Readiness Level: 60+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- POLICY IMPERATIVE SECTION -->
+<section class="max-w-container-max mx-auto px-margin-desktop py-stack-xl">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8 md:col-start-3">
+<h2 class="font-headline-lg text-headline-lg mb-8">Education as Adaptation Infrastructure</h2>
+<div class="font-body-lg text-on-surface space-y-6 leading-relaxed">
+<p>
+                            Historically, adaptation funding has been focused on concrete: sea walls, irrigation canals, and flood barriers. While necessary, this "hard" infrastructure is insufficient if the human capital inhabiting it is physically or cognitively compromised by the environment.
+                        </p>
+<blockquote class="hazard-border pl-8 py-4 my-12 bg-surface-container-low italic text-2xl font-light">
+                            "The UNFCCC Loss and Damage Fund must recognize that the destruction of a school year is as economically catastrophic as the destruction of a bridge."
+                        </blockquote>
+<p>
+                            The World Bank and the Green Climate Fund are beginning to pivot. A new framework is emerging where education is treated not as a social service, but as <strong>critical adaptation infrastructure</strong>. Protecting the cognitive trajectory of the 2.4 billion people living in hazard zones by 2050 is the most significant economic challenge of the century.
+                        </p>
+<p>
+                            Without education continuity during environmental shocks, the "loop" of poverty and vulnerability remains closed. Human capital reconstruction must be baked into every climate finance mechanism.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- CLOSING STATEMENT -->
+<section class="max-w-container-max mx-auto px-margin-desktop mb-stack-xl">
+<div class="bg-surface thin-border p-12 border-t-4 border-t-hazard-orange relative">
+<div class="absolute top-0 right-0 w-32 h-32 opacity-10">
+<span class="material-symbols-outlined" style="font-size: 128px;">warning</span>
+</div>
+<p class="font-display-xl text-3xl md:text-5xl max-w-5xl leading-tight">
+                    The century’s decisive map is not temperature alone. It is where <span class="text-hazard-orange">heat, air, water, poverty, and schooling collide</span> — and whether human capital is built fast enough to break the loop.
+                </p>
+</div>
+</section>
+<!-- FUTURE OUTLOOK STAT ROW -->
+<section class="bg-surface-container-lowest py-stack-lg border-t border-surface-variant">
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-gutter text-center">
+<div>
+<div class="font-stat-callout text-4xl text-on-surface mb-1">2050</div>
+<div class="font-label-caps text-[10px] text-on-surface-variant">PEAK HAZARD EXPOSURE</div>
+</div>
+<div>
+<div class="font-stat-callout text-4xl text-hazard-orange mb-1">45%</div>
+<div class="font-label-caps text-[10px] text-on-surface-variant">POST-SECONDARY THRESHOLD</div>
+</div>
+<div>
+<div class="font-stat-callout text-4xl text-on-surface mb-1">60+</div>
+<div class="font-label-caps text-[10px] text-on-surface-variant">READINESS TARGET</div>
+</div>
+<div>
+<div class="font-stat-callout text-4xl text-hazard-orange mb-1">5</div>
+<div class="font-label-caps text-[10px] text-on-surface-variant">FRONTLINE BELTS</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FOOTER -->
+
+<footer class="bg-surface-dim mt-stack-xl border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="space-y-6">
+<div class="font-headline-lg text-headline-lg text-on-surface uppercase tracking-tighter font-bold">HAZARD ZONES</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+A H Heuristics Project — mapping the geography of human exposure to environmental hazards.
+Investigating where extreme heat, toxic air, flooding, and demographic pressure collide.
+</p>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">
+© 2026 HAZARD ZONES. A H HEURISTICS PROJECT.
+</div>
+</div>
+<div class="grid grid-cols-2 gap-stack-lg">
+<div class="flex flex-col space-y-4">
+<h4 class="font-label-caps text-label-caps text-primary uppercase">Navigate</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary underline-offset-4 no-underline" href="index.html">Home</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary underline-offset-4 no-underline" href="heat-cognition.html">Heat &amp; Cognition</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary underline-offset-4 no-underline" href="the-trap.html">The Trap</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary underline-offset-4 no-underline" href="outlook.html">Outlook</a>
+</div>
+<div class="flex flex-col space-y-4">
+<h4 class="font-label-caps text-label-caps text-primary uppercase">Resources</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary underline-offset-4 no-underline" href="https://hheuristics.com" target="_blank">H Heuristics</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary underline-offset-4 no-underline" href="https://open.substack.com/pub/hheuristics/p/hazard-zones-the-geography-of-human" target="_blank">Original Article</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+        // Micro-interactions for the solution cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+                card.style.borderColor = '#e8611a';
+                card.style.transition = 'all 0.3s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.borderColor = '#333333';
+            });
+        });
+
+        // Simple scroll reveal for the headline
+        window.addEventListener('scroll', () => {
+            const masthead = document.querySelector('header');
+            if (window.scrollY > 50) {
+                masthead.classList.add('shadow-lg', 'bg-opacity-95');
+            } else {
+                masthead.classList.remove('shadow-lg', 'bg-opacity-95');
+            }
+        });
+    </script>
+
+<div class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-lg border-l-4 border-primary-container pl-6 uppercase">Population Growth in Hazard Zones (Projections)</h2>
+<div class="bg-surface-container-low p-6 border border-outline-variant" style="max-width:900px;margin:0 auto;">
+<canvas id="chartPopulation" height="350"></canvas>
+</div>
+</div>
+<div class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-stack-lg border-l-4 border-primary-container pl-6 uppercase">Intervention Impact Matrix</h2>
+<div class="bg-surface-container-low p-6 border border-outline-variant" style="max-width:900px;margin:0 auto;">
+<canvas id="chartInterventions" height="350"></canvas>
+</div>
+</div>
+<script>
+(function() {
+// Stacked bar: Population projections
+var ctx1 = document.getElementById('chartPopulation').getContext('2d');
+new Chart(ctx1, {
+    type: 'bar',
+    data: {
+        labels: ['2025', '2035', '2050', '2075', '2100'],
+        datasets: [
+            { label: 'Indo-Gangetic', data: [685, 780, 920, 1050, 1120], backgroundColor: '#f06620' },
+            { label: 'Sahel', data: [410, 520, 680, 850, 980], backgroundColor: 'rgba(240,102,32,0.6)' },
+            { label: 'West Africa', data: [295, 380, 500, 620, 720], backgroundColor: 'rgba(240,102,32,0.4)' },
+            { label: 'MENA Deltas', data: [180, 220, 280, 340, 380], backgroundColor: 'rgba(240,102,32,0.25)' }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { labels: { color: '#e5e2e1', font: { family: 'Inter' } } }
+        },
+        scales: {
+            x: {
+                stacked: true,
+                ticks: { color: '#e5e2e1', font: { family: 'Space Grotesk', size: 12 } },
+                grid: { display: false }
+            },
+            y: {
+                stacked: true,
+                ticks: { color: '#a88a7f' },
+                grid: { color: 'rgba(168,138,127,0.15)' },
+                title: { display: true, text: 'Population (Millions)', color: '#a88a7f' }
+            }
+        }
+    }
+});
+
+// Horizontal bar: Intervention impact
+var ctx2 = document.getElementById('chartInterventions').getContext('2d');
+new Chart(ctx2, {
+    type: 'bar',
+    data: {
+        labels: ['Climate-Proof Schools', 'Applied Tech Institutes', 'Cash Transfers', 'Female Education Access', 'Infrastructure Only'],
+        datasets: [{
+            label: 'Estimated Impact (lives improved per $1M)',
+            data: [850, 720, 680, 920, 310],
+            backgroundColor: ['#f06620', '#f06620', '#f06620', '#f06620', '#474746'],
+            borderRadius: 2
+        }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: { display: false }
+        },
+        scales: {
+            x: {
+                ticks: { color: '#a88a7f' },
+                grid: { color: 'rgba(168,138,127,0.15)' },
+                title: { display: true, text: 'Estimated lives improved per $1M investment', color: '#a88a7f' }
+            },
+            y: {
+                ticks: { color: '#e5e2e1', font: { family: 'Space Grotesk', size: 12, weight: '600' } },
+                grid: { display: false }
+            }
+        }
+    }
+});
+})();
+</script>
+
+</body></html>
